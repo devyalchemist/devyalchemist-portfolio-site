@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+/* @import "tw-animate-css"; */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -54,12 +54,13 @@
 	--sidebar-border: oklch(0.922 0 0);
 	--sidebar-ring: oklch(0.708 0 0);
 }
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bg: #0a0a0a;
 		--text: #ededed;
-		--font-main: --font-test;
+		--font-main: var(--font-test);
 
 		--gray-50: #1a1a1a;
 		--gray-100: #222;
@@ -76,9 +77,10 @@
 
 /* Tailwind theme hook */
 @theme {
-	--color-portfolio-blue: var(--primary);
+	--color-portfolio-blue: #c4d7f2;
 	--color-portfolio-dark: var(--dark);
-	--color-portfolio-accent: var(--accent);
+	--color-portfolio-accent: #e9e;
+	/* --color-portfolio-accent: #e9e3b4; */
 	--color-portfolio-orange: var(--highlight);
 	--color-background: var(--bg);
 	--color-foreground: var(--text);

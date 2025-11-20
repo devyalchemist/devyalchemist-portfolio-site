@@ -1,4 +1,5 @@
-import { themecontext } from "@/context/ThemeProvider";
+"use client";
+import { themecontext } from "@/app/_context/ThemeProvider";
 import { useContext } from "react";
 
 export function useTheme() {
