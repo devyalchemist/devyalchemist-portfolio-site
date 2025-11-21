@@ -1,8 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
+import { getRepoReadme } from "@/services/apiGitReadme";
 // import { Button } from "shadcn/ui"; // replace with your shadcn button if different
 
 interface Project {
@@ -45,67 +52,54 @@ const projects: Project[] = [
 		liveUrl: "#",
 	},
 ];
-
+type summaryType = {
+	index: number;
+	summary: string;
+};
 const MyProjects: React.FC = () => {
+	const [summary, setSummary] = useState<summaryType[]>([]);
+	async function handleReadme(idx: number) {
+		const value = await getRepoReadme(
+			"stage-3b-frontend-track-hng-devyalchemist"
+		);
+		setSummary((prev) => [...prev, { index: idx, summary: value.summary }]);
+		console.log(value);
+	}
 	return (
 		<section className="py-16 px-6 bg-background text-foreground min-h-screen">
 			<div className="w-full">
-				<h1 className="text-4xl sm:text-5xl font-bold mb-12 text-center">
+				<h1 className="text-4xl [font-family:var(--mono-font)] sm:text-5xl mb-12 text-center">
 					My Projects
 				</h1>
 
 				<div className="flex justify-between gap-32">
-					{projects.map((project) => (
-						<div
-							key={project.id}
-							className="flex-1 bg-card rounded-xl shadow-lg overflow-hidden flex flex-col">
-							<div className="relative w-full h-48">
-								<Image
-									src={project.imageUrl}
-									alt={project.title}
-									fill
-									className="object-cover"
-								/>
-							</div>
-							<div className="p-4 flex flex-col flex-1">
-								<h2 className="text-xl font-semibold mb-2">{project.title}</h2>
-								<p className="text-sm text-foreground/70 flex-1 mb-4">
-									{project.description}
-								</p>
-								<div className="flex flex-wrap gap-2 mb-4">
-									{project.tech.map((tech) => (
-										<span
-											key={tech}
-											className="text-xs px-2 py-1 bg-foreground/10 rounded-full">
-											{tech}
-										</span>
-									))}
-								</div>
-								<div className="flex gap-2 mt-auto">
-									{project.githubUrl && (
-										<a
-											href={project.githubUrl}
-											target="_blank"
-											className="flex-1">
-											<Button variant="outline" className="w-full">
-												GitHub
-											</Button>
-										</a>
-									)}
-									{project.liveUrl && (
-										<a
-											href={project.liveUrl}
-											target="_blank"
-											className="flex-1">
-											<Button variant="secondary" className="w-full">
-												Live
-											</Button>
-										</a>
-									)}
-								</div>
-							</div>
-						</div>
-					))}
+					{
+						<Accordion
+							type="single"
+							collapsible
+							className="w-full"
+							defaultValue="item-1">
+							{projects.map((project, idx) => (
+								<AccordionItem key={idx} value={`item-${idx + 1}`}>
+									<AccordionTrigger>{project.title}</AccordionTrigger>
+									<AccordionContent className="flex flex-col gap-4 text-balance">
+										<p>{project.description}</p>
+										<p>
+											Key features include advanced processing capabilities, and
+											an intuitive user interface designed for both beginners
+											and experts.
+										</p>
+										<Button
+											onClick={() => handleReadme(idx)}
+											variant={"outline"}>
+											readme
+										</Button>
+										{summary.find((item) => item.index === idx)?.summary}
+									</AccordionContent>
+								</AccordionItem>
+							))}
+						</Accordion>
+					}
 				</div>
 			</div>
 		</section>

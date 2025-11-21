@@ -1,6 +1,11 @@
+import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
+import { useTheme } from "next-themes";
 import React from "react";
 
 const AboutMe = () => {
+	const { theme } = useTheme();
+
 	return (
 		<>
 			<h1 className="font-test animate-bounce	 text- sm:text-5xl text-[1.4rem] font-bold mb-4">
@@ -13,6 +18,15 @@ const AboutMe = () => {
 				development. Check out my work on and follow my journey into innovative
 				web and decentralized solutions.
 			</p>
+			<div className="flex justify-end px-12 mt-12">
+				<Button
+					className={`${
+						theme === "dark" ? "text-white " : "bg-white border-black/30 border"
+					} px-6 py-6`}
+					variant={"outline"}>
+					<span>Read more </span> <ArrowUpRight />
+				</Button>
+			</div>
 		</>
 	);
 };
