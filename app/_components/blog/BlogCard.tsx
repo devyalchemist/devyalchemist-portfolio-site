@@ -1,14 +1,6 @@
 "use client";
 import { Divider } from "antd";
-import {
-	faArrowLeft,
-	faComment,
-	faBookmark,
-	faHeart,
-	faMagnifyingGlass,
-	faPlane,
-	faShareAlt,
-} from "@fortawesome/free-solid-svg-icons";
+
 import {
 	faHeart as faHeartRegular,
 	faComment as faCommentOutline,

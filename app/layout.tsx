@@ -4,8 +4,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Merriweather, Space_Mono } from "next/font/google";
 import "./globals.css";
 import HomeHeader from "./_components/HomeHeader";
-// import ThemeProvider from "./_context/ThemeProvider";
-import { useTheme } from "@/hooks/useTheme";
 
 const lobster = Merriweather({
 	weight: "400",
