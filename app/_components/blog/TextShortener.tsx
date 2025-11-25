@@ -19,16 +19,14 @@ const TextShortener = ({
 		.slice(wordCount, wordCount + 10)
 		.join(" ");
 	return (
-		<p>
+		<p className="pt-4">
 			{`${content}`}{" "}
 			{
-				<Tooltip title={title}>
-					<span
-						className="text-blue-400 underline"
-						onClick={() => setIsFull((prev) => !prev)}>
-						read more
-					</span>
-				</Tooltip>
+				<span
+					className="text-blue-400 hover:cursor-pointer	 underline"
+					onClick={() => setIsFull((prev) => !prev)}>
+					read more
+				</span>
 			}
 		</p>
 	);

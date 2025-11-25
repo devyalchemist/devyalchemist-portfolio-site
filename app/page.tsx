@@ -2,10 +2,15 @@
 import Box from "./_components/Box";
 import Image from "next/image";
 import { useState } from "react";
-import AboutMe from "./_components/AboutMe";
-import ContactMe from "./_components/ContactMe";
+import AboutMe from "./_sections/short-sections/AboutMe";
+import ContactMe from "./_sections/short-sections/ContactMe";
 
-import MyProjects from "./_components/MyProjectsSection";
+import MyProjects from "./_sections/short-sections/MyProjects";
+import MyTechStack from "./_sections/MyTechStack";
+import MyProjectsSection from "./_sections/MyProjectsSection";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import FadeOnScroll from "./_components/FadeOnScroll";
 type menuType = {
 	menuName: string;
 	bgColor: string;
@@ -41,8 +46,19 @@ function Page() {
 										<li
 											key={idx}
 											onClick={() => setDisplay(idx + 1)}
-											className={`flex-1 flex justify-center items-center cursor-pointer ${menu.bgColor}`}>
-											{menu.menuName}
+											className={`flex-1 flex justify-center relative group items-center cursor-pointer ${
+												display === idx + 1
+													? "bg-gray-500 text-white"
+													: menu.bgColor
+											}`}>
+											<div
+												className={`absolute left-0 top-0  h-full group-hover:block hidden  bg-gray-500 background-flow ${
+													display === idx + 1 ? "block animate-none" : ""
+												} `}></div>
+
+											<span className="z-6 group-hover:text-white duration-500">
+												{menu.menuName}
+											</span>
 										</li>
 									))}
 								</ul>
@@ -52,13 +68,44 @@ function Page() {
 						<div className="sm:py-20 max-w-xl py-2 sm:px-4">
 							{display == 1 && <AboutMe />}
 							{display == 2 && <ContactMe />}
-							{display == 3 && <AboutMe />}
+							{display == 3 && <MyProjects />}
 						</div>
 					</div>
 				</section>
 			</Box>
 			{/* <AboutMeSection /> */}
-			<MyProjects />
+			<FadeOnScroll>
+				<section>
+					<Box>
+						<h1 className="text-4xl [font-family:var(--mono-font)]  sm:text-5xl mb-30 text-center">
+							Random facts about me{" "}
+						</h1>
+						<div className="justify-center flex items-center">
+							<div className="flex gap-4">
+								<div className="w-[24rem] h-[24rem] relative">
+									<Image
+										src={"/earth-in-dark-bg.jpg"}
+										alt="earth"
+										fill
+										className="object-cover"
+									/>
+								</div>
+								<Card className="max-w-lg py-4 px-6 flex justify-between flex-col">
+									<p>
+										Lorem ipsum dolor sit amet consectetur adipisicing elit.
+										Eligendi, perspiciatis. Aperiam totam ipsum dolores error
+										dolorem, provident nisi inventore quo quasi. Est suscipit
+										nisi totam perspiciatis repudiandae velit doloribus in!
+									</p>
+									<Button className="justify-self-end">Generate</Button>
+								</Card>
+							</div>
+						</div>
+					</Box>
+				</section>
+			</FadeOnScroll>
+			<MyProjectsSection />
+			<MyTechStack />
 		</>
 	);
 }

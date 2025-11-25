@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider";
+// import { ThemeProvider } from "@/components/theme-provider";
 
 import { Merriweather, Space_Mono } from "next/font/google";
 import "./globals.css";
 import HomeHeader from "./_components/HomeHeader";
+import Footer from "./_components/Footer";
+import ThemeProvider from "./_context/ThemeProvider";
 
 const lobster = Merriweather({
 	weight: "400",
@@ -30,18 +32,15 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<body
-				className={`${lobster.variable} ${monospace.variable} relative  antialiased`}>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange>
+		<ThemeProvider>
+			<html lang="en" suppressHydrationWarning>
+				<body
+					className={`${lobster.variable} ${monospace.variable} relative  antialiased`}>
 					<HomeHeader />
 					<div className="py-16">{children}</div>
-				</ThemeProvider>
-			</body>
-		</html>
+					<Footer />
+				</body>
+			</html>
+		</ThemeProvider>
 	);
 }

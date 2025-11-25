@@ -51,12 +51,39 @@ const projects: Project[] = [
 		githubUrl: "https://github.com/devyalchemist/ecommerce-dapp",
 		liveUrl: "#",
 	},
+	{
+		id: 4,
+		title: "Dbank Solana",
+		description: "A full-stack decentralized e-commerce application.",
+		imageUrl: "https://picsum.photos/500",
+		tech: ["Next.js", "Solana", "TailwindCSS", "ShadCN"],
+		githubUrl: "https://github.com/devyalchemist/ecommerce-dapp",
+		liveUrl: "#",
+	},
+	{
+		id: 5,
+		title: "Mapping hash",
+		description: "A full-stack decentralized e-commerce application.",
+		imageUrl: "https://picsum.photos/500",
+		tech: ["Next.js", "Solana", "TailwindCSS", "ShadCN"],
+		githubUrl: "https://github.com/devyalchemist/ecommerce-dapp",
+		liveUrl: "#",
+	},
+	{
+		id: 6,
+		title: "Audiophile",
+		description: "A full-stack decentralized e-commerce application.",
+		imageUrl: "https://picsum.photos/500",
+		tech: ["Next.js", "Solana", "TailwindCSS", "ShadCN"],
+		githubUrl: "https://github.com/devyalchemist/ecommerce-dapp",
+		liveUrl: "#",
+	},
 ];
 type summaryType = {
 	index: number;
 	summary: string;
 };
-const MyProjects: React.FC = () => {
+const MyProjectsSection: React.FC = () => {
 	const [summary, setSummary] = useState<summaryType[]>([]);
 	async function handleReadme(idx: number) {
 		const value = await getRepoReadme(
@@ -66,7 +93,7 @@ const MyProjects: React.FC = () => {
 		console.log(value);
 	}
 	return (
-		<section className="py-16 px-6 bg-background text-foreground min-h-screen">
+		<section className="py-16 px-6 bg-background text-foreground">
 			<div className="w-full">
 				<h1 className="text-4xl [font-family:var(--mono-font)] sm:text-5xl mb-12 text-center">
 					My Projects
@@ -74,15 +101,16 @@ const MyProjects: React.FC = () => {
 
 				<div className="flex justify-between gap-32">
 					{
-						<Accordion
-							type="single"
-							collapsible
-							className="w-full"
-							defaultValue="item-1">
+						<Accordion type="single" collapsible className="w-full">
 							{projects.map((project, idx) => (
-								<AccordionItem key={idx} value={`item-${idx + 1}`}>
-									<AccordionTrigger>{project.title}</AccordionTrigger>
-									<AccordionContent className="flex flex-col gap-4 text-balance">
+								<AccordionItem
+									className="py-2"
+									key={idx}
+									value={`item-${idx + 1}`}>
+									<AccordionTrigger className="text-[1.5rem]">
+										{project.title}
+									</AccordionTrigger>
+									<AccordionContent className="flex py-6 flex-col gap-4 ">
 										<p>{project.description}</p>
 										<p>
 											Key features include advanced processing capabilities, and
@@ -106,4 +134,4 @@ const MyProjects: React.FC = () => {
 	);
 };
 
-export default MyProjects;
+export default MyProjectsSection;

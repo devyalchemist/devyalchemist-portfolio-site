@@ -49,3 +49,16 @@
 							</div>
 						</div>
 					))}
+
+					++++
+
++++++++++++
+<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange>
+					<HomeHeader />
+					<div className="py-16">{children}</div>
+					<Footer />
+				</ThemeProvider>

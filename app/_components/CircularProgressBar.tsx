@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface CircularProgressProps {
 	size?: number; // diameter of circle
@@ -21,7 +21,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
 	const offset = circumference - (percentage / 100) * circumference;
 
 	return (
-		<svg width={size} height={size} className="rotate-[-90deg]">
+		<svg width={size} height={size} className="">
 			{/* Track Circle */}
 			<circle
 				cx={size / 2}
@@ -50,8 +50,9 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
 				y="50%"
 				textAnchor="middle"
 				dy=".3em"
-				className="text-lg font-semibold fill-foreground">
+				className="text-lg group font-semibold fill-foreground">
 				{percentage}%
+				{/* <span className="hover:hidden block">{children}</span> */}
 			</text>
 		</svg>
 	);

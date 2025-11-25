@@ -24,34 +24,34 @@ const BlogCard = () => {
 				<h1 className="text-[1.2rem]">The essense of Oil in bread</h1>
 				<p>@gospeluo</p>
 			</div>
-			<div className="flex justify-end items-end">
-				<div className="flex w-[120px] justify-between">
-					<div>
-						<FontAwesomeIcon
-							className="w-4 aspect-square"
-							icon={faCommentOutline}
-						/>
-						<span>{stats.commentCount}</span>
-					</div>
-					<div>
-						<FontAwesomeIcon
-							className="w-4 aspect-square"
-							icon={faHeartRegular}
-						/>
-						<span>{stats.likesCount}</span>
-					</div>
-					<div>
-						<FontAwesomeIcon
-							className="w-4 aspect-square"
-							icon={faBookmarkOuline}
-						/>
-						<span>{stats.bookmarksCount}</span>
+			<div className="divide-accent/80 flex flex-col  divide-y">
+				<div className="flex pb-6 justify-end items-end">
+					<div className="flex w-[120px] justify-between">
+						<div>
+							<FontAwesomeIcon
+								className="w-4 aspect-square"
+								icon={faCommentOutline}
+							/>
+							<span>{stats.commentCount}</span>
+						</div>
+						<div>
+							<FontAwesomeIcon
+								className="w-4 aspect-square"
+								icon={faHeartRegular}
+							/>
+							<span>{stats.likesCount}</span>
+						</div>
+						<div>
+							<FontAwesomeIcon
+								className="w-4 aspect-square"
+								icon={faBookmarkOuline}
+							/>
+							<span>{stats.bookmarksCount}</span>
+						</div>
 					</div>
 				</div>
+				<TextShortener wordCount={10} text={content} />
 			</div>
-			<Divider />
-
-			<TextShortener wordCount={10} text={content} />
 		</Card>
 	);
 };

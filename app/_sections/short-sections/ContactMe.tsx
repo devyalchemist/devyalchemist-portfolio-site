@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useAppTheme } from "@/hooks/useAppTheme";
 import {
 	faGithub,
 	faLinkedin,
@@ -17,8 +18,7 @@ const socials = [
 	{ media: "Github", icon: faGithub, link: "https://github.com/devyalchemist" },
 ];
 const ContactMe = () => {
-	const { theme } = useTheme();
-
+	const { appTheme } = useAppTheme();
 	return (
 		<>
 			<h1 className="font-test animate-bounce sm:text-5xl text-[1.4rem] font-bold mb-4">
@@ -30,7 +30,7 @@ const ContactMe = () => {
 					{socials.map((social, idx) => (
 						<li
 							className={`flex-1 py-2 ${
-								theme === "dark"
+								appTheme === "dark"
 									? "hover:bg-white/20 hover:text-white"
 									: "hover:bg-accent/40 hover:text-white "
 							} rounded-[5px] px-2 items-center`}
@@ -40,7 +40,6 @@ const ContactMe = () => {
 								className="flex gap-x-4 w-full items-center"
 								href={social.link}>
 								<Button
-									// size={"icon"}
 									variant="outline"
 									className="h-16 aspect-square rounded-full">
 									<FontAwesomeIcon

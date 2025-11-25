@@ -167,3 +167,48 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+@keyframes scroll-x {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+@keyframes scroll-x-phone {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-250%);
+	}
+}
+@keyframes scroll-x-phone-rev {
+	0% {
+		transform: translateX(-250%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+@keyframes background-flow {
+	from {
+		width: 0%;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+.background-flow {
+	animation: background-flow 1.5s ease-in-out forwards;
+}
+
+.carousel-track-phone-rev {
+	animation: scroll-x-phone-rev 20s linear infinite;
+}
+
+.carousel-track-phone {
+	animation: scroll-x-phone 20s linear infinite;
+}

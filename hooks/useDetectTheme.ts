@@ -1,10 +1,9 @@
+"use client";
 import { useEffect, useState } from "react";
-import { Themetype } from "@/types/types";
+import { useTheme } from "next-themes";
 
-export function useDetectTheme(): Themetype {
-	const [theme, setTheme] = useState<"light" | "dark">(() => {
-		if (typeof window === "undefined") return "light";
-
+export function useDetectTheme() {
+	const [theme, setAppTheme] = useState<"light" | "dark">(() => {
 		const stored = localStorage.getItem("theme") as "light" | "dark" | null;
 		if (stored) return stored;
 
@@ -16,7 +15,10 @@ export function useDetectTheme(): Themetype {
 
 	useEffect(() => {
 		localStorage.setItem("theme", theme);
+		if (theme === "dark") {
+			document.documentElement.classList.add("dark");
+		}
 	}, [theme]);
 
-	return { theme, setTheme };
+	return { theme, setAppTheme };
 }

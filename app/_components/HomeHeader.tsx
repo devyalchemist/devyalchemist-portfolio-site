@@ -9,12 +9,23 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Tooltip } from "antd";
 import Link from "next/link";
-import { useTheme } from "next-themes";
+import { useAppTheme } from "@/hooks/useAppTheme";
+// import { useTheme } from "next-themes";
 // import { useTheme } from "@/hooks/useTheme";
 
 const HomeHeader = () => {
-	const { theme, setTheme } = useTheme();
-
+	// const { theme, setTheme } = useTheme();
+	const { appTheme, setAppTheme } = useAppTheme();
+	console.log(appTheme);
+	function toggleTheme() {
+		if (appTheme === "dark") {
+			setAppTheme("light");
+			document.documentElement.classList.remove("dark");
+		} else {
+			setAppTheme("dark");
+			document.documentElement.classList.add("dark");
+		}
+	}
 	return (
 		<div className="dark top-0 z-1000 fixed w-full">
 			<header className="flex  dark:bg-black dark:text-white justify-between py-2 px-4 items-center bg-white/50 backdrop-blur-md border-b-[0.5px] border-black/10 ">
@@ -47,16 +58,15 @@ const HomeHeader = () => {
 							</Tooltip>
 						</Link>
 					</div>
-					<Button
-						onClick={() => {
-							setTheme((prev) => (prev === "light" ? "dark" : "light"));
-						}}>
-						{theme === "dark" ? (
-							<FontAwesomeIcon icon={faSunOutline} />
-						) : (
-							<FontAwesomeIcon icon={faMoonOutline} />
-						)}
-					</Button>
+					<Tooltip title={"custom color picker for text	"}>
+						<Button onClick={toggleTheme}>
+							{appTheme === "dark" ? (
+								<FontAwesomeIcon icon={faSunOutline} />
+							) : (
+								<FontAwesomeIcon icon={faMoonOutline} />
+							)}
+						</Button>
+					</Tooltip>
 				</div>
 			</header>
 		</div>
