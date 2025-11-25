@@ -7,7 +7,7 @@ import { createContext, ReactNode } from "react";
 export const ThemeContext = createContext<Themetype | null>(null);
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
-	const { theme: appTheme, setAppTheme } = useDetectTheme();
+	const { appTheme, setAppTheme } = useDetectTheme();
 	return (
 		<ThemeContext.Provider value={{ appTheme, setAppTheme }}>
 			{children}
