@@ -22,7 +22,7 @@ export default function FadeOnScroll({
 				setIsVisible(entry.isIntersecting);
 			},
 			{
-				threshold: 0.4, // 10% of element visible triggers fade
+				threshold: 0.2, // 10% of element visible triggers fade
 			}
 		);
 

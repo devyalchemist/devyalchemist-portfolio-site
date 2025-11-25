@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faShare, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faShare } from "@fortawesome/free-solid-svg-icons";
 import {
 	faSun as faSunOutline,
 	faMoon as faMoonOutline,
@@ -10,13 +10,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Tooltip } from "antd";
 import Link from "next/link";
 import { useAppTheme } from "@/hooks/useAppTheme";
-// import { useTheme } from "next-themes";
-// import { useTheme } from "@/hooks/useTheme";
 
 const HomeHeader = () => {
-	// const { theme, setTheme } = useTheme();
 	const { appTheme, setAppTheme } = useAppTheme();
-	console.log(appTheme);
+
 	function toggleTheme() {
 		if (appTheme === "dark") {
 			setAppTheme("light");
@@ -26,6 +23,7 @@ const HomeHeader = () => {
 			document.documentElement.classList.add("dark");
 		}
 	}
+
 	return (
 		<div className="dark top-0 z-1000 fixed w-full">
 			<header className="flex  dark:bg-black dark:text-white justify-between py-2 px-4 items-center bg-white/50 backdrop-blur-md border-b-[0.5px] border-black/10 ">

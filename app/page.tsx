@@ -11,78 +11,47 @@ import MyProjectsSection from "./_sections/MyProjectsSection";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import FadeOnScroll from "./_components/FadeOnScroll";
-type menuType = {
-	menuName: string;
-	bgColor: string;
-};
-const menuList: menuType[] = [
-	{ menuName: "About Me", bgColor: "bg-portfolio-blue" },
-	{ menuName: "Contact Me", bgColor: "bg-portfolio-accent" },
-	{ menuName: "My Projects", bgColor: "bg-portfolio-orange" },
-	{ menuName: "Gallery", bgColor: "bg-green-700" },
-];
+import { getRandomFact } from "@/services/apiRandomFacts";
+import { Input } from "@/components/ui/input";
+import { Wand } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSadCry } from "@fortawesome/free-solid-svg-icons";
+import { useAppTheme } from "@/hooks/useAppTheme";
+import { Divider } from "antd";
+import HeroSection from "./_sections/HeroSection";
+import { Spinner } from "@/components/ui/spinner";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function Page() {
 	const [display, setDisplay] = useState(1);
-
+	const [fact, setFact] = useState("");
+	const [promptLoading, setPromptLoading] = useState(false);
+	const [userPrompt, setUserPrompt] = useState("");
+	async function generateFact(prompt: string) {
+		setPromptLoading(true);
+		const res = await getRandomFact(prompt);
+		setPromptLoading(false);
+		console.log(res);
+		setFact(res.message.answer);
+	}
+	const { appTheme } = useAppTheme();
 	return (
 		<>
 			<Box>
-				<section className="sm:py-12 py-4 dark">
-					<div className="sm:flex-row overflow-hidden flex flex-col sm:items-start items-center gap-2">
-						<div className="w-full sm:w-auto flex bg-gray-200">
-							<div className="relative sm:w-[450px] sm:h-[500px] w-[200px] h-[220px] bg-gray-500">
-								<Image
-									fill
-									className="object-cover"
-									src={"/profilepic.png"}
-									alt="profile-pic"
-								/>
-							</div>
-
-							<div className="flex-1 sm:min-w-[24rem]  relative overflow-hidden">
-								<ul className="flex h-full divide-accent divide-y-2 flex-col sm:text-[3rem]  [font-family:var(--mono-font)]">
-									{menuList.map((menu, idx) => (
-										<li
-											key={idx}
-											onClick={() => setDisplay(idx + 1)}
-											className={`flex-1 flex justify-center relative group items-center cursor-pointer ${
-												display === idx + 1
-													? "bg-gray-500 text-white"
-													: menu.bgColor
-											}`}>
-											<div
-												className={`absolute left-0 top-0  h-full group-hover:block hidden  bg-gray-500 background-flow ${
-													display === idx + 1 ? "block animate-none" : ""
-												} `}></div>
-
-											<span className="z-6 group-hover:text-white duration-500">
-												{menu.menuName}
-											</span>
-										</li>
-									))}
-								</ul>
-							</div>
-						</div>
-
-						<div className="sm:py-20 max-w-xl py-2 sm:px-4">
-							{display == 1 && <AboutMe />}
-							{display == 2 && <ContactMe />}
-							{display == 3 && <MyProjects />}
-						</div>
-					</div>
-				</section>
+				<HeroSection />
 			</Box>
-			{/* <AboutMeSection /> */}
+			<div className="sm:w-[1200px] mx-auto my-12">
+				<Divider />
+			</div>
 			<FadeOnScroll>
 				<section>
 					<Box>
-						<h1 className="text-4xl [font-family:var(--mono-font)]  sm:text-5xl mb-30 text-center">
-							Random facts about me{" "}
+						<h1 className="text-4xl max-sm:text-[1.5rem] [font-family:var(--mono-font)]  sm:text-5xl mb-30 text-center">
+							Random facts about me
 						</h1>
 						<div className="justify-center flex items-center">
-							<div className="flex gap-4">
-								<div className="w-[24rem] h-[24rem] relative">
+							<div className="flex sm:gap-4 max-sm:flex-col">
+								<div className="sm:w-[24rem] max-sm:w-[22rem] h-[24rem] max-sm:h-[10rem] relative">
 									<Image
 										src={"/earth-in-dark-bg.jpg"}
 										alt="earth"
@@ -90,21 +59,64 @@ function Page() {
 										className="object-cover"
 									/>
 								</div>
-								<Card className="max-w-lg py-4 px-6 flex justify-between flex-col">
-									<p>
-										Lorem ipsum dolor sit amet consectetur adipisicing elit.
-										Eligendi, perspiciatis. Aperiam totam ipsum dolores error
-										dolorem, provident nisi inventore quo quasi. Est suscipit
-										nisi totam perspiciatis repudiandae velit doloribus in!
-									</p>
-									<Button className="justify-self-end">Generate</Button>
+								<Card className="max-w-lg sm:w-[24rem] py-4 px-6 flex justify-between flex-col max-sm:h-[320px]">
+									{!fact ? (
+										<div className="flex flex-1 flex-col justify-center items-center">
+											<FontAwesomeIcon
+												className={`text-[5rem] text-gray-300/20 ${
+													appTheme === "dark"
+														? "text-gray-300/20 "
+														: "text-slate-900/30"
+												}`}
+												icon={faSadCry}
+											/>
+											<p
+												className={`text-gray-300/20 ${
+													appTheme === "dark"
+														? "text-gray-300/20 "
+														: "text-slate-900/30"
+												}`}>
+												Dare to ask!
+											</p>
+										</div>
+									) : promptLoading ? (
+										<div className="flex flex-col gap-2">
+											<Skeleton className="w-full h-4" />
+											<Skeleton className="w-full h-4" />
+											<Skeleton className="w-full h-4" />
+											<Skeleton className="w-full h-4" />
+											<Skeleton className="w-full h-4" />
+											<Skeleton className="w-[40%] h-4" />
+										</div>
+									) : (
+										fact
+									)}
+									<div className="flex-col flex gap-2">
+										<Input
+											placeholder="Ask about devyalchemist"
+											value={userPrompt}
+											onChange={(e) => setUserPrompt(e.target.value)}
+										/>
+										<Button
+											disabled={promptLoading}
+											onClick={() => generateFact(userPrompt)}
+											className="justify-self-end">
+											{promptLoading && <Spinner />}
+											Generate{" "}
+											<span>
+												<Wand />
+											</span>
+										</Button>
+									</div>
 								</Card>
 							</div>
 						</div>
 					</Box>
 				</section>
 			</FadeOnScroll>
-			<MyProjectsSection />
+			<FadeOnScroll>
+				<MyProjectsSection />
+			</FadeOnScroll>
 			<MyTechStack />
 		</>
 	);
