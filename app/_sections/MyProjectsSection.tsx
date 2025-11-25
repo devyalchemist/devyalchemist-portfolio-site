@@ -10,6 +10,7 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { getRepoReadme } from "@/services/apiGitReadme";
+import { Card } from "@/components/ui/card";
 // import { Button } from "shadcn/ui"; // replace with your shadcn button if different
 
 interface Project {
@@ -93,7 +94,7 @@ const MyProjectsSection: React.FC = () => {
 		console.log(value);
 	}
 	return (
-		<section className="py-16 px-6 bg-background text-foreground">
+		<section className="py-16 px-6 mb-6	 bg-background text-foreground">
 			<div className="w-full">
 				<h1 className="text-4xl [font-family:var(--mono-font)] sm:text-5xl mb-12 text-center">
 					My Projects
@@ -111,6 +112,19 @@ const MyProjectsSection: React.FC = () => {
 										{project.title}
 									</AccordionTrigger>
 									<AccordionContent className="flex py-6 flex-col gap-4 ">
+										<Card className="w-[24rem] px-6">
+											{/* <div className="relative w-32 h-32">
+												<Image
+													src={"https://picsum.photos/400"}
+													alt="project-image"
+													fill
+													className="object-cover"
+												/>
+											</div> */}
+											<span>
+												this is a basic porfolio site with professional look
+											</span>
+										</Card>
 										<p>{project.description}</p>
 										<p>
 											Key features include advanced processing capabilities, and
