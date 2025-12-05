@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-// import { ThemeProvider } from "@/components/theme-provider";
-
 import { Merriweather, Space_Mono } from "next/font/google";
 import "./globals.css";
 import HomeHeader from "./_components/HomeHeader";

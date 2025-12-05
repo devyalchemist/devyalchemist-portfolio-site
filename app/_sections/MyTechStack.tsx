@@ -17,26 +17,25 @@ import {
 	faLinux,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
-import CircularProgress from "../_components/CircularProgressBar";
+
 import { useState } from "react";
 
 export default function MyTechStack() {
 	const items = [
-		faReact,
-		faNodeJs,
-		faJs,
-		faCss3,
-		faHtml5,
-		faGithub,
-		faDocker,
-		faNpm,
-		faPython,
-		faFigma,
-		faSass,
-		faGitAlt,
-		faBootstrap,
-		faLinux,
+		{ icon: faReact, name: "React" },
+		{ icon: faNodeJs, name: "Node.js" },
+		{ icon: faJs, name: "JavaScript" },
+		{ icon: faCss3, name: "CSS3" },
+		{ icon: faHtml5, name: "HTML5" },
+		{ icon: faGithub, name: "GitHub" },
+		{ icon: faDocker, name: "Docker" },
+		{ icon: faNpm, name: "NPM" },
+		{ icon: faPython, name: "Python" },
+		{ icon: faFigma, name: "Figma" },
+		{ icon: faSass, name: "Sass" },
+		{ icon: faGitAlt, name: "Git" },
+		{ icon: faBootstrap, name: "Bootstrap" },
+		{ icon: faLinux, name: "Linux" },
 	];
 
 	const doubled = [...items, ...items]; // important for smooth infinite loop
@@ -61,7 +60,8 @@ export default function MyTechStack() {
 							className="sm:min-w-[200px] min-w-[150px]  bg-slate-200/20  py-8 px-4 rounded-[5px] hover:bg-slate-100/10 hover:border flex-col flex-shrink-0 flex items-center justify-center">
 							{/* <CircularProgress percentage={39} /> */}
 							<div className="flex flex-col gap-y-6 items-center">
-								React <FontAwesomeIcon className="text-[3rem]" icon={src} />
+								{src.name}{" "}
+								<FontAwesomeIcon className="text-[3rem]" icon={src.icon} />
 							</div>
 						</div>
 					))}
@@ -78,7 +78,8 @@ export default function MyTechStack() {
 							className="sm:min-w-[200px] min-w-[150px]  bg-slate-200/20  py-8 px-4 rounded-[5px] hover:bg-slate-100/10 hover:border flex-col flex-shrink-0 flex items-center justify-center">
 							{/* <CircularProgress percentage={39} /> */}
 							<div className="flex flex-col gap-y-6 items-center">
-								React <FontAwesomeIcon className="text-[3rem]" icon={src} />
+								{src.name}{" "}
+								<FontAwesomeIcon className="text-[3rem]" icon={src.icon} />
 							</div>
 						</div>
 					))}

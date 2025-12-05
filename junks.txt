@@ -62,3 +62,9 @@
 					<div className="py-16">{children}</div>
 					<Footer />
 				</ThemeProvider>
+
+${
+								theme === "dark"
+									? "hover:bg-white/20 hover:text-white"
+									: "hover:bg-accent/40 hover:text-white "
+							} 

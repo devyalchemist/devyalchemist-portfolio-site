@@ -3,6 +3,7 @@ import AboutMe from "./short-sections/AboutMe";
 import ContactMe from "./short-sections/ContactMe";
 import MyProjects from "./short-sections/MyProjects";
 import Image from "next/image";
+import MyGallery from "./short-sections/MyGallery";
 
 type menuType = {
 	menuName: string;
@@ -60,6 +61,7 @@ const HeroSection = () => {
 					{display == 1 && <AboutMe />}
 					{display == 2 && <ContactMe />}
 					{display == 3 && <MyProjects />}
+					{display == 4 && <MyGallery />}
 				</div>
 			</div>
 		</section>

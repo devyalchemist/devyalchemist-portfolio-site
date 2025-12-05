@@ -19,7 +19,7 @@ const Page = () => {
 				</Button>
 			</div>
 
-			<Box>
+			<Box fullHeight={false}>
 				<div className="mt-8  justify-between  flex flex-wrap gap-y-8">
 					<BlogCard />
 					<BlogCard />

@@ -16,9 +16,11 @@ const AboutMe = () => {
 				web and decentralized solutions.
 			</p>
 			<div className="flex justify-end px-12 text-white mt-12">
-				<Button className={`px-6 py-6`} variant={"outline"}>
-					<span>Read more </span> <ArrowUpRight />
-				</Button>
+				<a href="#about-me">
+					<Button className={`px-6 py-6`} variant={"outline"}>
+						<span>Read more </span> <ArrowUpRight />
+					</Button>
+				</a>
 			</div>
 		</>
 	);

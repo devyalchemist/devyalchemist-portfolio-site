@@ -6,6 +6,7 @@ import {
 	faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ArrowUpRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import React from "react";
 const socials = [
@@ -52,6 +53,13 @@ const ContactMe = () => {
 						</li>
 					))}
 				</ul>
+			</div>
+			<div className="flex justify-end px-4 text-white mt-12">
+				<a href="#about-me">
+					<Button className={`px-6 py-6`} variant={"outline"}>
+						<span>Join Mail-list</span> <ArrowUpRight />
+					</Button>
+				</a>
 			</div>
 		</>
 	);
