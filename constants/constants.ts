@@ -129,7 +129,6 @@ export const repo: Repo[] = [
 		name: "nike-web-app",
 		description: "Nike Store ecommerce web app",
 		imageUrl: "/portfolio-images/nike-web-app.png",
-
 		techStack: ["React"],
 		githubUrl: "https://github.com/devyalchemist/nike-web-app",
 		liveUrl: "https://devyalchemist.github.io/nike-web-app/",
