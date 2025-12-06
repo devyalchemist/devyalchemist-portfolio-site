@@ -14,16 +14,17 @@ import Image from "next/image";
 import Box from "../_components/Box";
 
 const AboutMe = () => {
-	const [display, setDisplay] = useState(1);
 	const [fact, setFact] = useState("");
 	const [promptLoading, setPromptLoading] = useState(false);
 	const [userPrompt, setUserPrompt] = useState("");
+
 	async function generateFact(prompt: string) {
 		setPromptLoading(true);
 		const res = await getRandomFact(prompt);
 		setPromptLoading(false);
 		console.log(res);
 		setFact(res.message.answer);
+		setUserPrompt("");
 	}
 	const { appTheme } = useAppTheme();
 	return (
@@ -45,9 +46,9 @@ const AboutMe = () => {
 									className="object-cover"
 								/>
 							</div>
-							<Card className="max-w-lg sm:w-[24rem] py-4 px-6 flex justify-between flex-col max-sm:h-[320px]">
+							<Card className="sm:w-[24rem] py-4 px-6 flex justify-between w-[22rem] flex-col ">
 								{!fact ? (
-									<div className="flex flex-1 flex-col justify-center items-center">
+									<div className="flex-1 flex-col middle">
 										<FontAwesomeIcon
 											className={`text-[5rem] text-gray-300/20 ${
 												appTheme === "dark"
@@ -57,11 +58,8 @@ const AboutMe = () => {
 											icon={faSadCry}
 										/>
 										<p
-											className={`text-gray-300/20 ${
-												appTheme === "dark"
-													? "text-gray-300/20 "
-													: "text-slate-900/30"
-											}`}>
+											className=" dark:text-gray-300/20 
+												text-slate-900/30">
 											Dare to ask!
 										</p>
 									</div>

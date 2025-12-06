@@ -11,7 +11,7 @@ const Box = ({
 		<div
 			className={
 				fullHeight
-					? "sm:p-0 px-4 max-w-[1440px] mx-auto max-sm:min-h-[400px] sm:min-h-[800px] h-dvh"
+					? "sm:p-0 px-4 max-w-[1440px] mx-auto  sm:min-h-[800px] sm:h-dvh"
 					: "sm:p-0 px-4 max-w-[1440px] mx-auto"
 			}>
 			{children}

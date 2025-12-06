@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AboutMe from "./short-sections/AboutMe";
 import ContactMe from "./short-sections/ContactMe";
 import MyProjects from "./short-sections/MyProjects";
@@ -20,8 +20,8 @@ const HeroSection = () => {
 	const [display, setDisplay] = useState(1);
 
 	return (
-		<section className="sm:py-12 py-4 dark">
-			<div className="sm:flex-row overflow-hidden flex flex-col sm:items-start items-center gap-2">
+		<section className="sm:py-12 py-4 ">
+			<div className="sm:flex-row overflow-hidden flex flex-col max-sm:gap-y-12 sm:items-start items-center gap-2">
 				<div className="w-full sm:w-auto flex bg-gray-200">
 					<div className="relative sm:w-[450px] sm:h-[500px] w-[200px] h-[220px] bg-gray-500">
 						<Image
@@ -57,7 +57,7 @@ const HeroSection = () => {
 					</div>
 				</div>
 
-				<div className="sm:py-20 max-w-xl py-2 sm:px-4">
+				<div className="sm:py-20 max-sm:w-full  py-2 sm:px-4">
 					{display == 1 && <AboutMe />}
 					{display == 2 && <ContactMe />}
 					{display == 3 && <MyProjects />}

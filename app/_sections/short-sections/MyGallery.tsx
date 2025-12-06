@@ -14,7 +14,7 @@ const MyGallery = () => {
 				would. They leave a footprint in time and are wonderful for memories.
 				Here are some of mine.
 			</p>
-			<div className="flex justify-end px-12 text-white mt-12">
+			<div className="flex justify-end sm:px-12  mt-12">
 				<Button className={`px-6 py-6`} variant={"outline"}>
 					<span>My Gallery </span> <ArrowUpRight />
 				</Button>

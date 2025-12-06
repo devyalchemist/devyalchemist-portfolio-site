@@ -26,15 +26,13 @@ const ContactMe = () => {
 				Reach out to me on{" "}
 			</h1>
 
-			<div className="text-lg text-gray-600 ">
+			<div className="text-lg text-gray-300 ">
 				<ul className="flex flex-col gap-x-20  divide-accent/20 divide-y">
 					{socials.map((social, idx) => (
 						<li
-							className={`flex-1 py-2 ${
-								appTheme === "dark"
-									? "hover:bg-white/20 hover:text-white"
-									: "hover:bg-accent/40 hover:text-white "
-							} rounded-[5px] px-2 items-center`}
+							className="flex-1 py-2 text-gray-700 dark:hover:bg-white/20 
+									 hover:bg-accent/40 dark:hover:text-white 
+							rounded-[5px] px-2 items-center"
 							key={idx}>
 							<a
 								target="_blank"
@@ -54,7 +52,7 @@ const ContactMe = () => {
 					))}
 				</ul>
 			</div>
-			<div className="flex justify-end px-4 text-white mt-12">
+			<div className="flex justify-end px-4  mt-12">
 				<a href="#about-me">
 					<Button className={`px-6 py-6`} variant={"outline"}>
 						<span>Join Mail-list</span> <ArrowUpRight />
