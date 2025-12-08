@@ -31,11 +31,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<ThemeProvider>
-			<html lang="en" suppressHydrationWarning>
+			<html lang="en">
 				<body
 					className={`${lobster.variable} ${monospace.variable} relative  antialiased`}>
 					<HomeHeader />
-					<div className="py-16">{children}</div>
+					<div className="pt-16  ">{children}</div>
 					<Footer />
 				</body>
 			</html>

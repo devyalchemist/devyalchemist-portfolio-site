@@ -1,34 +1,31 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Box from "../_components/Box";
 import BlogCard from "../_components/blog/BlogCard";
-import { useRouter } from "next/navigation";
+import { type SanityDocument } from "next-sanity";
+import { client } from "@/lib/sanity/client";
+import BackButton from "../_components/BackButton";
 
-const Page = () => {
-	const router = useRouter();
+const POSTS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
+
+const options = { next: { revalidate: 30 } };
+const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+export default async function Page() {
 	return (
 		<section>
 			<div className="bg-black flex items-center justify-center text-white h-[120px] [font-family:var(--test-font)] relative">
 				welcome to my tech-digest
-				<Button
-					onClick={() => router.back()}
-					className="aspect-square w-8 absolute top-5 left-5">
-					<FontAwesomeIcon icon={faArrowLeft} />
-				</Button>
+				<BackButton />
 			</div>
 
-			<Box fullHeight={false}>
+			<Box fullHeight={true}>
 				<div className="mt-8  justify-between  flex flex-wrap gap-y-8">
-					<BlogCard />
-					<BlogCard />
-					<BlogCard />
-					<BlogCard />
+					{posts.map((post, idx) => (
+						<BlogCard key={idx} post={post} />
+					))}
 				</div>
 			</Box>
 		</section>
 	);
-};
-
-export default Page;
+}

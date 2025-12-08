@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card } from "@/components/ui/card";
 const content =
 	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Iuretempore hic consectetur numquam, facilis laboriosam quisquam eaqueid, repudiandae beatae illum rerum inventore sequi necessitatibusenim reiciendis aspernatur, eveniet distinctio.";
-const BlogCard = () => {
+const BlogCard = ({ post }) => {
 	const [stats, setStats] = useState({
 		commentCount: 0,
 		likesCount: 0,
@@ -21,7 +21,7 @@ const BlogCard = () => {
 	return (
 		<Card className="sm:w-[44rem] p-4 w-full">
 			<div>
-				<h1 className="text-[1.2rem]">The essense of Oil in bread</h1>
+				<h1 className="text-[1.2rem]">{post.title}</h1>
 				<p>@gospeluo</p>
 			</div>
 			<div className="divide-accent/80 flex flex-col  divide-y">
@@ -50,7 +50,11 @@ const BlogCard = () => {
 						</div>
 					</div>
 				</div>
-				<TextShortener wordCount={10} text={content} />
+				<TextShortener
+					link={`blog/${post.slug.current}`}
+					wordCount={10}
+					text={content}
+				/>
 			</div>
 		</Card>
 	);
