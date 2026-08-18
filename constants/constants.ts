@@ -133,6 +133,15 @@ export const repo: Repo[] = [
 		githubUrl: "https://github.com/devyalchemist/nike-web-app",
 		liveUrl: "https://devyalchemist.github.io/nike-web-app/",
 	},
+	{
+		id: 9,
+		name: "nutrimind",
+		description: "An AI Nutritionist app hosted 100% on the Edge using Cloudflare Workers, featuring Llama 3.3 for native AI inference and Durable Objects for state management.",
+		imageUrl: "/portfolio-images/nutri-mind.png",
+		techStack: ["Cloudflare Workers", "Llama 3.3", "Preact", "TailwindCSS"],
+		githubUrl: "https://github.com/devyalchemist/cf_ai_edge-mind",
+		liveUrl: "https://cloudflare-edge-ai-chat.devyalchemist.workers.dev/",
+	},
 ];
 
 export const projects: Project[] = [
@@ -190,5 +199,14 @@ export const projects: Project[] = [
 		tech: ["Next.js", "Solana", "TailwindCSS", "ShadCN"],
 		githubUrl: "https://github.com/devyalchemist/ecommerce-dapp",
 		liveUrl: "#",
+	},
+	{
+		id: 7,
+		title: "NutriMind",
+		description: "An AI Nutritionist app hosted 100% on the Edge using Cloudflare Workers, featuring Llama 3.3 for native AI inference.",
+		imageUrl: "/portfolio-images/nutrimind.png",
+		tech: ["Cloudflare Workers", "Llama 3.3", "Preact", "TailwindCSS"],
+		githubUrl: "https://github.com/devyalchemist/cf_ai_edge-mind",
+		liveUrl: "https://cloudflare-edge-ai-chat.devyalchemist.workers.dev/",
 	},
 ];
