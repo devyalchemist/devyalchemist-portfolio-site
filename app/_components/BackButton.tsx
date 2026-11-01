@@ -1,19 +1,34 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/navigation";
+
 import React from "react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
-const BackButton = () => {
+interface BackButtonProps {
+	className?: string;
+	fallbackHref?: string;
+}
+
+export default function BackButton({
+	className = "",
+	fallbackHref = "/",
+}: BackButtonProps) {
 	const router = useRouter();
-	return (
-		<Button
-			onClick={() => router.back()}
-			className="aspect-square w-8 absolute top-5 left-5">
-			<FontAwesomeIcon icon={faArrowLeft} />
-		</Button>
-	);
-};
 
-export default BackButton;
+	const handleClick = () => {
+		if (typeof window !== "undefined" && window.history.length > 1) {
+			router.back();
+		} else {
+			router.push(fallbackHref);
+		}
+	};
+
+	return (
+		<button
+			onClick={handleClick}
+			aria-label="Go back"
+			className={`inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-md ${className}`}>
+			<ArrowLeft className="w-4 h-4" />
+		</button>
+	);
+}
