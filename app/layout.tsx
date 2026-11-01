@@ -35,7 +35,7 @@ export default function RootLayout({
 				<body
 					className={`${lobster.variable} ${monospace.variable} relative  antialiased`}>
 					<HomeHeader />
-					<div className="pt-16  ">{children}</div>
+					<div className="pt-16 w-full max-w-full overflow-x-hidden">{children}</div>
 					<Footer />
 				</body>
 			</html>

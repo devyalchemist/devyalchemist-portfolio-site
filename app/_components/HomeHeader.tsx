@@ -26,10 +26,11 @@ const HomeHeader = () => {
 	return (
 		<div className=" top-0 z-1000 fixed w-full">
 			<header className="flex   dark:text-white justify-between py-2 px-4 items-center bg-white/50 backdrop-blur-md border-b-[0.5px] border-black/10 ">
-				<Link href={"/"}>
-					<span className="font-bold text-[1.2rem] 	[font-family:var(--test-font)]">
+				<Link href={"/"} className="group flex items-center gap-1.5">
+					<span className="font-bold text-[1.1rem] sm:text-[1.2rem] [font-family:var(--mono-font)] text-foreground group-hover:text-orange-500 transition-colors">
 						devyalchemist
 					</span>
+					<span className="w-2 h-4 bg-orange-500 inline-block animate-pulse align-middle" />
 				</Link>
 				<div className="flex gap-2">
 					<div className="flex gap-8">
